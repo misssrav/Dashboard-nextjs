@@ -74,7 +74,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
   revalidatePath('/dashboard/invoices');
   redirect('/dashboard/invoices');
   console.log(formData);
-  console.log(typeof formData.amount);
+  console.log(typeof formData.get('amount'));
 }
 export async function updateInvoice(id: string, formData: FormData) {
   const { customerId, amount, status } = UpdateInvoice.parse({
