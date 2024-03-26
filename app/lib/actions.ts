@@ -48,7 +48,15 @@ export async function createInvoice(prevState: State, formData: FormData) {
     !validatedFields.status
   ) {
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
+      errors: {
+        customerId: !validatedFields.customerId
+          ? ['Please select a customer.']
+          : [],
+        amount: !validatedFields.amount ? ['Please enter a valid amount.'] : [],
+        status: !validatedFields.status
+          ? ['Please select an invoice status.']
+          : [],
+      },
       message: 'Missing Fields. Failed to Create Invoice.',
     };
   }
