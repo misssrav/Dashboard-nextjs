@@ -38,7 +38,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     status: formData.get('status'),
   });
 
-  const { amount } = validatedFields;
+  const { amount, customerId, status } = validatedFields;
 
   const amountInCents = amount * 100;
   const date = new Date().toISOString().split('T')[0];
